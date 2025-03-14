@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  cn.bupt.dssc.common.config.MyBatisConfig,\
+  cn.bupt.dssc.common.config.JsonConfig

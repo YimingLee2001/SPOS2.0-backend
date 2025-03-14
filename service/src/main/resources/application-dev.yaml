@@ -1,0 +1,7 @@
+spos:
+  server:
+    port: 9002
+  db:
+    host: 10.160.4.147
+    username: poetryworld
+    password: poetryworld
