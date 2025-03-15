@@ -10,6 +10,11 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${spos.db.username}
     password: ${spos.db.password}
+  redis:
+    database: 0
+    host: 10.160.4.147
+    port: 6379
+    password: 123456
 mybatis-plus:
   configuration:
     default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler

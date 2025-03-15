@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class LlmApiConfig {
-
     @Bean
     public OpenAILlm llm() {
         OpenAILlmConfig config = new OpenAILlmConfig();

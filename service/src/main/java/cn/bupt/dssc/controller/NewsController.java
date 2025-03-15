@@ -10,10 +10,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,13 +22,21 @@ public class NewsController {
     private final IFijiNewsService newsService;
 
     private Convert<FijiNews, FijiNewsVO> news2vo = (FijiNews origin, FijiNewsVO target) -> {
-        String uri = "/root/SPOS2.0-backend/news_img/" + origin.getId() + ".jpg";
+        String uri = "/root/SPOS2.0-backend/news_img/" + origin.getId() + ".jpg"; // 服务器上的地址
+        // String uri = "C:/Users/Yimin/Pictures" + "pig" + ".jpg"; // 我的机器上的地址
         target.setPic(ConvertBase64.uri2Base64(uri));
     };
 
     @ApiOperation("根据id查询新闻")
     @GetMapping("/{id}")
-    public FijiNewsVO getNewsById(@RequestParam(required = true) int id) {
+    public FijiNewsVO getNewsById(@PathVariable(required = true) int id) {
+        FijiNews news = newsService.getById(id);
+        return BeanUtils.copyBean(news, FijiNewsVO.class, news2vo);
+    }
+
+    @ApiOperation("根据id查询新闻")
+    @GetMapping
+    public FijiNewsVO getNewsById2(@RequestParam(required = true) int id) {
         FijiNews news = newsService.getById(id);
         return BeanUtils.copyBean(news, FijiNewsVO.class, news2vo);
     }
