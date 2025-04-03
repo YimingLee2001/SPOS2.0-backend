@@ -15,6 +15,12 @@ spring:
     host: 10.160.4.147
     port: 6379
     password: 123456
+  data:
+    mongodb:
+      host: 10.160.4.147
+      port: 27017
+      database: spos
+#      uri: mongodb://10.160.4.147:27017/spos
 mybatis-plus:
   configuration:
     default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler

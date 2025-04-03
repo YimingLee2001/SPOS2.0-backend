@@ -31,7 +31,9 @@
         <mybatis-plus.version>3.4.3</mybatis-plus.version>
         <hutool.version>5.8.11</hutool.version>
         <mysql.version>8.0.31</mysql.version> <!--我本地的mysql-->
-        <agent-flex.version>1.0.0-rc.6</agent-flex.version>
+        <agent-flex.version>1.0.0-rc.10</agent-flex.version>
+        <spring-data-mongodb.version>3.0.8</spring-data-mongodb.version>
+        <mongodb-driver.version>3.12.14</mongodb-driver.version>
     </properties>
 
     <dependencyManagement>
@@ -73,8 +75,30 @@
             <!--大模型应用框架 agent-flex-->
             <dependency>
                 <groupId>com.agentsflex</groupId>
-                <artifactId>agents-flex-bom</artifactId>
+                <artifactId>agents-flex-spring-boot-starter</artifactId>
                 <version>${agent-flex.version}</version>
+            </dependency>
+            <!--spring-boot-starter-data-mongodb-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-mongodb</artifactId>
+                <version>${spring-data-mongodb.version}</version>
+            </dependency>
+            <!--mongo-driver -->
+            <dependency>
+                <groupId>org.mongodb</groupId>
+                <artifactId>mongo-java-driver</artifactId>
+                <version>${mongodb-driver.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mongodb</groupId>
+                <artifactId>mongodb-driver-core</artifactId>
+                <version>${mongodb-driver.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mongodb</groupId>
+                <artifactId>mongodb-driver-sync</artifactId>
+                <version>${mongodb-driver.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

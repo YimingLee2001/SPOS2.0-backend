@@ -15,12 +15,14 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        // 由于前端没有做JWT相关，所以暂时不做校验
+
         // 1.获取请求头中的 token
-        String token = request.getHeader("authorization");
+//        String token = request.getHeader("authorization");
         // 2.校验token
-        String userId = jwtTool.parseToken(token);
+//        String userId = jwtTool.parseToken(token);
         // 3.存入上下文
-        UserContext.setUser(userId);
+//        UserContext.setUser(userId);
         // 4.放行
         return true;
     }
@@ -28,6 +30,6 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         // 清理用户
-        UserContext.removeUser();
+//        UserContext.removeUser();
     }
 }

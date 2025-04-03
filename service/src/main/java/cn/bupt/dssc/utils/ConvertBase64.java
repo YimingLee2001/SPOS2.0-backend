@@ -1,20 +1,23 @@
 package cn.bupt.dssc.utils;
 
-import com.google.common.io.Files;
+import lombok.extern.slf4j.Slf4j;
 
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Base64;
 
+@Slf4j
 public class ConvertBase64 {
 
     public static String uri2Base64(String uri) {
-        File file = new File(uri);
         byte[] bytes;
         try {
-            bytes = Files.toByteArray(file);
+            Path path = Paths.get(uri);
+            bytes = Files.readAllBytes(path);
         } catch (IOException e) {
-            // 报错，日志
+            log.warn("文件资源读取错误 -> ", uri);
             return null;
         }
 
