@@ -8,28 +8,30 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-import java.io.Serializable;
+import java.sql.Timestamp;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("User")
-public class User implements Serializable {
+@TableName("News_zh")
+public class NewsZh {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "userId", type = IdType.AUTO)
-    private String userId;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
-    @TableField(value = "userName")
-    private String userName;
+    private String title;
 
-    @TableField(value = "passWord")
-    private String passWord;
+    private Timestamp timestamp;
 
-    @TableField(value = "email")
-    private String email;
+    private String source;
 
-    @TableField(value = "role")
-    private String role;
+    private String author;
+
+    private String img_url;
+
+    private String img_text;
+
+    private String content;
 }

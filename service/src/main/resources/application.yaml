@@ -6,7 +6,7 @@ spring:
   profiles:
     active: dev
   datasource:
-    url: jdbc:mysql://${spos.db.host}:3306/pcube?characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://${spos.db.host}:3306/${spos.db.database}?characterEncoding=utf8&useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${spos.db.username}
     password: ${spos.db.password}
@@ -24,6 +24,7 @@ spring:
 mybatis-plus:
   configuration:
     default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler
+    map-underscore-to-camel-case: false
   global-config:
     db-config:
       update-strategy: not_null

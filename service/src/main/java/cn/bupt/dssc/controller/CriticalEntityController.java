@@ -2,9 +2,9 @@ package cn.bupt.dssc.controller;
 
 import cn.bupt.dssc.common.utils.BeanUtils;
 import cn.bupt.dssc.common.utils.Convert;
-import cn.bupt.dssc.domain.po.FijiCriticalEntity;
-import cn.bupt.dssc.domain.vo.FijiCriticalEntityVO;
-import cn.bupt.dssc.service.IFijiCriticalEntityService;
+import cn.bupt.dssc.domain.po.CriticalEntity;
+import cn.bupt.dssc.domain.vo.CriticalEntityVO;
+import cn.bupt.dssc.service.ICriticalEntityService;
 import cn.bupt.dssc.utils.ConvertBase64;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.swagger.annotations.Api;
@@ -19,48 +19,48 @@ import java.util.List;
 @RequestMapping("/entity")
 @RequiredArgsConstructor
 public class CriticalEntityController {
-    private final IFijiCriticalEntityService criticalEntityService;
-    private Convert<FijiCriticalEntity, FijiCriticalEntityVO> entity2vo = (FijiCriticalEntity origin, FijiCriticalEntityVO target) -> {
+    private final ICriticalEntityService criticalEntityService;
+    private Convert<CriticalEntity, CriticalEntityVO> entity2vo = (CriticalEntity origin, CriticalEntityVO target) -> {
         String uri = "/root/SPOS2.0-backend/entity_img/" + origin.getEid() + ".png";
         target.setImage(ConvertBase64.uri2Base64(uri));
     };
 
     @ApiOperation(("根据姓名模糊查询名人实体"))
     @GetMapping("/celebrity/condition")
-    public List<FijiCriticalEntityVO> getCelebrityByName(@RequestParam(required = true) String name) {
-        LambdaQueryWrapper<FijiCriticalEntity> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.like(FijiCriticalEntity::getName, name);
-        List<FijiCriticalEntity> entityList = criticalEntityService.getBaseMapper().selectList(queryWrapper);
-        return BeanUtils.copyList(entityList, FijiCriticalEntityVO.class, entity2vo);
+    public List<CriticalEntityVO> getCelebrityByName(@RequestParam(required = true) String name) {
+        LambdaQueryWrapper<CriticalEntity> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.like(CriticalEntity::getName, name);
+        List<CriticalEntity> entityList = criticalEntityService.getBaseMapper().selectList(queryWrapper);
+        return BeanUtils.copyList(entityList, CriticalEntityVO.class, entity2vo);
     }
 
     @ApiOperation(("根据eid查询名人实体"))
     @GetMapping("/celebrity/id")
-    public FijiCriticalEntityVO getCelebrityById(@RequestParam(required = true) String eid) {
-        FijiCriticalEntity entity = criticalEntityService.getById(eid);
-        return BeanUtils.copyBean(entity, FijiCriticalEntityVO.class, entity2vo);
+    public CriticalEntityVO getCelebrityById(@RequestParam(required = true) String eid) {
+        CriticalEntity entity = criticalEntityService.getById(eid);
+        return BeanUtils.copyBean(entity, CriticalEntityVO.class, entity2vo);
     }
 
     @ApiOperation(("根据姓名模糊查询名人实体"))
     @GetMapping("/condition")
-    public List<FijiCriticalEntityVO> getCelebrityByName2(@RequestParam(required = true) String name) {
-        LambdaQueryWrapper<FijiCriticalEntity> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.like(FijiCriticalEntity::getName, name);
-        List<FijiCriticalEntity> entityList = criticalEntityService.getBaseMapper().selectList(queryWrapper);
-        return BeanUtils.copyList(entityList, FijiCriticalEntityVO.class, entity2vo);
+    public List<CriticalEntityVO> getCelebrityByName2(@RequestParam(required = true) String name) {
+        LambdaQueryWrapper<CriticalEntity> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.like(CriticalEntity::getName, name);
+        List<CriticalEntity> entityList = criticalEntityService.getBaseMapper().selectList(queryWrapper);
+        return BeanUtils.copyList(entityList, CriticalEntityVO.class, entity2vo);
     }
 
     @ApiOperation(("根据eid查询名人实体"))
     @GetMapping("/{id}")
-    public FijiCriticalEntityVO getCelebrityById2(@PathVariable String id) {
-        FijiCriticalEntity entity = criticalEntityService.getById(id);
-        return BeanUtils.copyBean(entity, FijiCriticalEntityVO.class, entity2vo);
+    public CriticalEntityVO getCelebrityById2(@PathVariable String id) {
+        CriticalEntity entity = criticalEntityService.getById(id);
+        return BeanUtils.copyBean(entity, CriticalEntityVO.class, entity2vo);
     }
 
     @ApiOperation(("根据eid查询名人实体"))
     @GetMapping("/celebrity/{id}")
-    public FijiCriticalEntityVO getCelebrityById3(@PathVariable String id) {
-        FijiCriticalEntity entity = criticalEntityService.getById(id);
-        return BeanUtils.copyBean(entity, FijiCriticalEntityVO.class, entity2vo);
+    public CriticalEntityVO getCelebrityById3(@PathVariable String id) {
+        CriticalEntity entity = criticalEntityService.getById(id);
+        return BeanUtils.copyBean(entity, CriticalEntityVO.class, entity2vo);
     }
 }

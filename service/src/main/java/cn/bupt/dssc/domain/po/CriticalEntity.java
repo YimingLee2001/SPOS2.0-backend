@@ -13,8 +13,8 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("feijicriticalEntity")
-public class FijiCriticalEntity implements Serializable {
+@TableName("Critical_Entity")
+public class CriticalEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

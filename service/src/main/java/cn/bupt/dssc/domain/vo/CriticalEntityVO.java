@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @ApiModel(description = "名人vo实体")
-public class FijiCriticalEntityVO {
+public class CriticalEntityVO {
 
     @ApiModelProperty("id")
     private String eid;

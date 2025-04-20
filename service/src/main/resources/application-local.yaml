@@ -3,5 +3,6 @@ spos:
     port: 8080
   db:
     host: 10.160.4.147
+    database: spos
     username: poetryworld
     password: poetryworld
